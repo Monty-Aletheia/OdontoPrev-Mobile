@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThirdActivity">
+
+    <ImageButton
+        android:id="@+id/nextArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        app:srcCompat="@drawable/arrow_forward_24dp_000000_fill0_wght400_grad0_opsz24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/nextTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        app:layout_constraintStart_toStartOf="@id/nextArrow"
+        app:layout_constraintEnd_toEndOf="@id/nextArrow"
+        app:layout_constraintBottom_toTopOf="@id/nextArrow"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/previousArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        app:srcCompat="@drawable/arrow_back_24dp_000000_fill0_wght400_grad0_opsz24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/previousTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/previous"
+        app:layout_constraintStart_toStartOf="@id/previousArrow"
+        app:layout_constraintEnd_toEndOf="@id/previousArrow"
+        app:layout_constraintBottom_toTopOf="@id/previousArrow"
+        android:textSize="16sp" />
+
+
+
+    <TextView
+        android:id="@+id/descTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/loren"
+        app:layout_constraintTop_toBottomOf="@+id/pageTextView"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/previousArrow"
+        app:layout_constraintEnd_toStartOf="@id/nextArrow"/>
+
+    <TextView
+        android:id="@+id/pageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_3_page"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
