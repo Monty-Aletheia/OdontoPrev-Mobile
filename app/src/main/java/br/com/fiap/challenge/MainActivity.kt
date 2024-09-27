@@ -21,16 +21,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val button = findViewById<Button>(R.id.button)
-        button.setOnClickListener{
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
-        }
 
-        val nextArrow = findViewById<ImageButton>(R.id.nextArrow)
-        nextArrow.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
-        }
 
 
     }
