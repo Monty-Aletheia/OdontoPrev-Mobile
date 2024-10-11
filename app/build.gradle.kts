@@ -7,6 +7,11 @@ android {
     namespace = "br.com.fiap.challenge"
     compileSdk = 34
 
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "br.com.fiap.challenge"
         minSdk = 24
