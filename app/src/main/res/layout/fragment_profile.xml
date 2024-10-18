@@ -14,6 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/arrow_back_24dp_000000_fill0_wght400_grad0_opsz24" />
+        android:src="@drawable/fragment_profile_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
