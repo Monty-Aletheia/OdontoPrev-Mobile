@@ -41,6 +41,10 @@ class MenuActivity : AppCompatActivity() {
             navigateTo(R.id.addConsultationFragment)
         }
 
+        binding.imageViewListIcon.setOnClickListener{
+            navigateTo(R.id.consultationListFragment)
+        }
+
 
     }
 
