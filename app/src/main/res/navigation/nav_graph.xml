@@ -9,5 +9,22 @@
         android:id="@+id/profileFragment"
         android:name="br.com.fiap.challenge.ui.login.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile"/>
+
+
+    <fragment
+        android:id="@+id/addConsultationFragment"
+        android:name="br.com.fiap.challenge.ui.login.AddConsultationFragment"
+        android:label="AddConsultationFragment"
+        tools:layout="@layout/fragment_add_consultation"/>
+
+    <fragment
+        android:id="@+id/consultationListFragment"
+        android:name="br.com.fiap.challenge.ui.login.ConsultationListFragment"
+        android:label="ConsultationListFragment"
+        tools:layout="@layout/fragment_consultation_list"/>
+
+
+
+
 </navigation>

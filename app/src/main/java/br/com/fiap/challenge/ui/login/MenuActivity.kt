@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import br.com.fiap.challenge.R
 import br.com.fiap.challenge.databinding.ActivityMenuBinding
@@ -29,8 +32,20 @@ class MenuActivity : AppCompatActivity() {
             insets
         }
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView4) as NavHostFragment
+
+        binding.imageViewProfileIcon.setOnClickListener{
+            navigateTo(R.id.profileFragment)
+        }
+
+        binding.imageViewAddIcon.setOnClickListener{
+            navigateTo(R.id.addConsultationFragment)
+        }
 
 
+    }
+
+    private fun navigateTo(destination: Int) {
+        val navController = findNavController(R.id.fragmentContainerView4)
+        navController.navigate(destination)
     }
 }
