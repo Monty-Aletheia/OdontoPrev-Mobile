@@ -5,11 +5,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import br.com.fiap.challenge.R
 import br.com.fiap.challenge.databinding.ActivityMenuBinding
 
 class MenuActivity : AppCompatActivity() {
     lateinit var binding: ActivityMenuBinding
+    private lateinit var navController: NavController
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +29,7 @@ class MenuActivity : AppCompatActivity() {
             insets
         }
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView4) as NavHostFragment
 
 
     }

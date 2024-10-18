@@ -9,9 +9,10 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView4"
-        android:name="br.com.fiap.challenge.ui.login.ProfileFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:navGraph="@navigation/nav_graph"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +20,7 @@
 
     <View
         android:id="@+id/viewBackgroundFooter"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="77dp"
         android:background="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,7 +36,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageViewProfileIcon"
         app:layout_constraintTop_toTopOf="@+id/imageViewProfileIcon"
-        tools:srcCompat="@drawable/add_icon" />
+        android:src="@drawable/add_icon" />
 
     <ImageView
         android:id="@+id/imageViewListIcon"
