@@ -6,17 +6,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
-import androidx.navigation.NavGraph
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import br.com.fiap.challenge.R
+import br.com.fiap.challenge.animations.AnimationsManager
 import br.com.fiap.challenge.databinding.ActivityMenuBinding
+import br.com.fiap.challenge.models.FragmentType
 
 class MenuActivity : AppCompatActivity() {
     lateinit var binding: ActivityMenuBinding
     private lateinit var navController: NavController
+    private lateinit var animationsManager: AnimationsManager
+    private var currentFragment: FragmentType = FragmentType.PROFILE
+    private var previousFragment: FragmentType? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,24 +34,43 @@ class MenuActivity : AppCompatActivity() {
             insets
         }
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView4) as NavHostFragment
+        navController = navHostFragment.navController
+
+        animationsManager = AnimationsManager()
+
 
         binding.imageViewProfileIcon.setOnClickListener{
-            navigateTo(R.id.profileFragment)
+            navigateTo(FragmentType.PROFILE)
         }
 
         binding.imageViewAddIcon.setOnClickListener{
-            navigateTo(R.id.addConsultationFragment)
+            navigateTo(FragmentType.ADD)
         }
 
         binding.imageViewListIcon.setOnClickListener{
-            navigateTo(R.id.consultationListFragment)
+            navigateTo(FragmentType.LIST)
         }
 
 
     }
 
-    private fun navigateTo(destination: Int) {
-        val navController = findNavController(R.id.fragmentContainerView4)
-        navController.navigate(destination)
+    private fun navigateTo(destination: FragmentType) {
+
+        if (currentFragment == destination) return
+
+        previousFragment = currentFragment
+        currentFragment =  destination
+        val navOptions = animationsManager.getNavOptionsFoFragment(destination, previousFragment)
+
+        when (destination){
+            FragmentType.PROFILE -> navController.navigate(R.id.profileFragment, null, navOptions)
+            FragmentType.LIST -> navController.navigate(R.id.consultationListFragment, null, navOptions)
+            FragmentType.ADD -> navController.navigate(R.id.addConsultationFragment, null, navOptions)
+        }
+
+
+
+
     }
 }
