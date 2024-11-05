@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.fiap.challenge.R
+import br.com.fiap.challenge.adapter.ConsultationAdapter
 import br.com.fiap.challenge.databinding.FragmentConsultationListBinding
 
 class ConsultationListFragment : Fragment() {
@@ -15,10 +16,17 @@ class ConsultationListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentConsultationListBinding.inflate(inflater, container, false)
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.recyclerViewConsultationItem.adapter = ConsultationAdapter()
+
     }
 
     override fun onDestroyView() {

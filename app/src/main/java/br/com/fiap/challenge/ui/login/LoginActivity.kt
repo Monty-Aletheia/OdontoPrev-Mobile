@@ -11,7 +11,7 @@ import br.com.fiap.challenge.R
 import br.com.fiap.challenge.databinding.LoginActivityBinding
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var binding: LoginActivityBinding;
+    private lateinit var binding: LoginActivityBinding;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

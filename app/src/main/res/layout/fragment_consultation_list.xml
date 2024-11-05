@@ -5,96 +5,15 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <View
-        android:id="@+id/viewExample"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/border_radius"
-        android:backgroundTint="@color/gray"
-        android:ems="10"
-        android:padding="6dp"
-        app:layout_constraintHorizontal_bias="0.502"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewConsultationItem"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/textExample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="6dp"
-        android:fontFamily="@font/inter_semibold"
-        android:text="Vai virar recycler"
-        android:textColor="@color/light_blue"
-        app:layout_constraintBottom_toTopOf="@+id/viewExample"
-        app:layout_constraintStart_toStartOf="@+id/viewExample"
-        app:layout_constraintEnd_toEndOf="@id/viewExample"/>
-
-    <View
-        android:id="@+id/viewExample2"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/border_radius"
-        android:backgroundTint="@color/gray"
-        android:ems="10"
-        android:padding="6dp"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintTop_toTopOf="@id/viewExample"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/textExample2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="6dp"
-        android:fontFamily="@font/inter_semibold"
-        android:text="Vai virar recycler"
-        android:textColor="@color/light_blue"
-        app:layout_constraintBottom_toTopOf="@+id/viewExample2"
-        app:layout_constraintStart_toStartOf="@+id/viewExample2"
-        app:layout_constraintEnd_toEndOf="@id/viewExample2"/>
-
-    <View
-        android:id="@+id/viewExample3"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/border_radius"
-        android:backgroundTint="@color/gray"
-        android:ems="10"
-        android:padding="6dp"
-        app:layout_constraintTop_toTopOf="@id/viewExample2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/textExample3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="6dp"
-        android:fontFamily="@font/inter_semibold"
-        android:text="Vai virar recycler"
-        android:textColor="@color/light_blue"
-        app:layout_constraintBottom_toTopOf="@+id/viewExample3"
-        app:layout_constraintStart_toStartOf="@+id/viewExample3"
-        app:layout_constraintEnd_toEndOf="@id/viewExample3"/>
-
-
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/consultation_item"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

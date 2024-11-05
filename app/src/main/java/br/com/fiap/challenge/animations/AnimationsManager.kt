@@ -6,7 +6,7 @@ import br.com.fiap.challenge.models.FragmentType
 
 class AnimationsManager {
 
-    fun getExitAnimation(currentFragment: FragmentType, previousFragment: FragmentType? = null): Int {
+    private fun getExitAnimation(currentFragment: FragmentType, previousFragment: FragmentType? = null): Int {
         return when (currentFragment){
             FragmentType.PROFILE -> R.anim.slide_out_right
             FragmentType.LIST -> R.anim.slide_out_left
@@ -21,7 +21,7 @@ class AnimationsManager {
     }
 
 
-    fun getEnterAnimation(currentFragment: FragmentType,previousFragment: FragmentType? = null): Int {
+    private fun getEnterAnimation(currentFragment: FragmentType,previousFragment: FragmentType? = null): Int {
         return when(currentFragment){
             FragmentType.PROFILE -> R.anim.slide_in_left
             FragmentType.LIST -> R.anim.slide_in_right
