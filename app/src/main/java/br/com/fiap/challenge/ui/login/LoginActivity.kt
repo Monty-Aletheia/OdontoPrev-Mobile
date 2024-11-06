@@ -3,24 +3,29 @@ package br.com.fiap.challenge.ui.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
-import br.com.fiap.challenge.R
+import br.com.fiap.challenge.data.SessionManager
 import br.com.fiap.challenge.databinding.LoginActivityBinding
 import br.com.fiap.challenge.network.LoginDTO
 import br.com.fiap.challenge.network.createAuthService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.UUID
+import kotlinx.coroutines.withContext
+
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: LoginActivityBinding;
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,52 +40,56 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+
         val button = binding.button
 
         button.setOnClickListener{
-
-
+            authLogin()
         }
 
 
 
     }
 
+
+
     private fun authLogin() =lifecycleScope.launch {
         val registerNumber = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
+        println(registerNumber)
+        println(password)
 
         try {
+                val authService = createAuthService()
+                val loginDTO = LoginDTO(registerNumber, password)
+                val response = withContext(Dispatchers.IO){
+                    authService.signIn(loginDTO)
+                }
+                println(loginDTO)
+                print(response.body())
 
-            val authService = createAuthService()
-            val loginDTO = LoginDTO(registerNumber, password)
 
-            lifecycleScope.launch(Dispatchers.IO) {
-                val response = authService.signIn(loginDTO)
+                if (response.isSuccessful && response.body()?.token != null) {
+                    val sessionToken = response.body()?.token!!.replace("session-token-", "")
+                    SessionManager.saveSessionToken(this@LoginActivity, sessionToken)
 
-                if (response.isSuccessful && response.body()?.sessionToken != null) {
-                    val sessionToken = response.body()?.sessionToken!!.replace("session-token-", "")
-                    val dentistId = sessionToken.let { UUID.fromString(it) }
 
-                    // TODO manter dentistId p uso posterior
-
-                    val intent = Intent(this, MenuActivity::class.java)
+                    val intent = Intent(this@LoginActivity, MenuActivity::class.java)
                     startActivity(intent)
 
                 } else {
+
                     Toast.makeText(
-                        requireContext(),
+                        this@LoginActivity,
                         "Não foi possível fazer o login",
                         Toast.LENGTH_LONG
                     ).show()
-
-
                 }
-            }
+
 
         } catch (ex: Exception){
             Toast.makeText(
-                requireContext(),
+                this@LoginActivity,
                 ex.message,
                 Toast.LENGTH_LONG
             ).show()
@@ -88,4 +97,5 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
+
 }

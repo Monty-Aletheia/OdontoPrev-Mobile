@@ -3,7 +3,7 @@ package br.com.fiap.challenge.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ConsultationAdapter(val consultations: List<Consultation>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ConsultationAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         TODO("Not yet implemented")

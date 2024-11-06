@@ -1,16 +1,13 @@
 package br.com.fiap.challenge.network
 
 
-import com.google.gson.annotations.SerializedName
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Query
 
-const val URL = "http://localhost:8080/"
+const val URL = "http://192.168.0.181:8080/api/"
 
 data class LoginDTO(
     val registrationNumber: String,
@@ -18,12 +15,13 @@ data class LoginDTO(
 )
 
 data class AuthResponse(
-    val sessionToken: String,
+    val token: String,
     val message: String
 )
 
+
 interface AuthService {
-    @POST("/auth/signIn")
+    @POST("auth/signIn")
     suspend fun signIn(@Body loginDTO: LoginDTO): Response<AuthResponse>
 }
 

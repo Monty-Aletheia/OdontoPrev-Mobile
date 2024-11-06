@@ -39,7 +39,8 @@ android {
 
 dependencies {
 
-
+    implementation(libs.androidx.datastore)
+    implementation(libs.androidx.datastore.core.android)
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.androidx.cardview)
