@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:background="@drawable/border_radius"
-        android:backgroundTint="@color/light_blue"
+        android:backgroundTint="@color/blue"
         android:fontFamily="@font/inter_bold"
         android:paddingStart="45dp"
         android:paddingEnd="45dp"
@@ -74,7 +74,7 @@
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/senha"
-        android:textColor="@color/light_blue"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
         app:layout_constraintStart_toStartOf="@+id/passwordEditText" />
 
@@ -86,7 +86,7 @@
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/email"
-        android:textColor="@color/light_blue"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/emailEditText"
         app:layout_constraintStart_toStartOf="@+id/emailEditText" />
 

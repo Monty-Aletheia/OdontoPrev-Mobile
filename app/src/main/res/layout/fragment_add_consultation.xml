@@ -48,7 +48,7 @@
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/procedimento"
-        android:textColor="@color/light_blue"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
         app:layout_constraintStart_toStartOf="@+id/passwordEditText" />
 
@@ -60,7 +60,7 @@
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/nome"
-        android:textColor="@color/light_blue"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/emailEditText"
         app:layout_constraintStart_toStartOf="@+id/emailEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,78 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="130dp">
 
-
-    <View
-        android:id="@+id/consultationBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginVertical="40dp"
-        android:background="@drawable/border_radius"
-        android:backgroundTint="@color/gray"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/arrowImageButton"
-        android:layout_width="60dp"
-        android:layout_height="25dp"
-        android:layout_margin="15dp"
-        android:background="@drawable/border_radius"
-        android:backgroundTint="@color/light_blue"
-        app:layout_constraintBottom_toBottomOf="@+id/consultationBackground"
-        app:layout_constraintEnd_toEndOf="@+id/consultationBackground"
-        app:srcCompat="@drawable/arrow_forward_24dp_000000_fill0_wght400_grad0_opsz24" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/profileImageConsultationItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/consultationBackground"
-        app:layout_constraintStart_toStartOf="@+id/consultationBackground"
-        app:layout_constraintTop_toTopOf="@+id/consultationBackground"
-        app:srcCompat="@drawable/consultation_item_profile_icon" />
+            <ImageView
+                android:id="@+id/userIcon"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/profile_list_item_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/patientNameConsultationItem"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:textSize="10sp"
-        android:fontFamily="@font/inter"
-        android:layout_marginEnd="90dp"
-        app:layout_constraintEnd_toEndOf="@+id/consultationBackground"
-        app:layout_constraintStart_toEndOf="@+id/profileImageConsultationItem"
-        app:layout_constraintTop_toTopOf="@+id/profileImageConsultationItem"
-        tools:text="Pedro Lucca Medeiros Miranda" />
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Pedro Lucca Medeiros Miranda"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/navigationIcon"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@id/userIcon"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/consultationValueConsultaionItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:fontFamily="@font/inter"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/arrowImageButton"
-        app:layout_constraintEnd_toEndOf="@+id/arrowImageButton"
-        app:layout_constraintStart_toStartOf="@+id/arrowImageButton"
-        tools:text="R$12.000" />
+            <TextView
+                android:id="@+id/userDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="11/08/2004"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                app:layout_constraintStart_toStartOf="@id/userName"
+                app:layout_constraintTop_toBottomOf="@id/userName" />
 
-    <TextView
-        android:id="@+id/consultationDateConsultationItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="11/08/2004"
-        android:textSize="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="@+id/patientNameConsultationItem"
-        app:layout_constraintTop_toBottomOf="@+id/patientNameConsultationItem" />
+            <TextView
+                android:id="@+id/userValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="R$20.000"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                app:layout_constraintStart_toStartOf="@id/userDate"
+                app:layout_constraintTop_toBottomOf="@id/userDate" />
+
+            <ImageView
+                android:id="@+id/navigationIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/consultation_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
