@@ -43,47 +43,45 @@ class LoginActivity : AppCompatActivity() {
 
         val button = binding.button
 
-        button.setOnClickListener{
+        button.setOnClickListener {
             authLogin()
         }
-
 
 
     }
 
 
-
-    private fun authLogin() =lifecycleScope.launch {
+    private fun authLogin() = lifecycleScope.launch {
         val registerNumber = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
 
         try {
-                val authService = createAuthService()
-                val loginDTO = LoginDTO(registerNumber, password)
-                val response = withContext(Dispatchers.IO){
-                    authService.signIn(loginDTO)
-                }
+            val authService = createAuthService()
+            val loginDTO = LoginDTO(registerNumber, password)
+            val response = withContext(Dispatchers.IO) {
+                authService.signIn(loginDTO)
+            }
 
 
-                if (response.isSuccessful && response.body()?.token != null) {
-                    val sessionToken = response.body()?.token!!.replace("session-token-", "")
-                    SessionManager.saveSessionToken(this@LoginActivity, sessionToken)
+            if (response.isSuccessful && response.body()?.token != null) {
+                val sessionToken = response.body()?.token!!.replace("session-token-", "")
+                SessionManager.saveSessionToken(this@LoginActivity, sessionToken)
 
 
-                    val intent = Intent(this@LoginActivity, MenuActivity::class.java)
-                    startActivity(intent)
+                val intent = Intent(this@LoginActivity, MenuActivity::class.java)
+                startActivity(intent)
 
-                } else {
+            } else {
 
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "Não foi possível fazer o login",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+                Toast.makeText(
+                    this@LoginActivity,
+                    "Não foi possível fazer o login",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
 
 
-        } catch (ex: Exception){
+        } catch (ex: Exception) {
             Toast.makeText(
                 this@LoginActivity,
                 ex.message,

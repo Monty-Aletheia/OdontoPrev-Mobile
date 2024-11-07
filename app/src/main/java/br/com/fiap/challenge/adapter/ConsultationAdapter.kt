@@ -12,7 +12,8 @@ class ConsultationAdapter(val listConsultations: List<ConsultationResponseDTO>) 
         fun bind(consultation: ConsultationResponseDTO){
             binding.userName.text = consultation.patient.name
             binding.userDate.text = consultation.consultationDate
-            binding.userValue.text = consultation.consultationValue.toString()
+            val value = consultation.consultationValue.toString()
+            binding.userValue.text = "R$ ${value}"
         }
     }
 

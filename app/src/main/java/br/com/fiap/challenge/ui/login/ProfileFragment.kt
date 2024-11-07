@@ -38,15 +38,6 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            val sessionToken = SessionManager.getSessionToken(requireContext())
-            binding.testeView.text = sessionToken
-
-            getConsultationsByDentist(sessionToken)
-
-
-        }
-
 
     }
 
@@ -57,32 +48,5 @@ class ProfileFragment : Fragment() {
     }
 
 
-    private suspend fun getConsultationsByDentist(dentistId: String): List<ConsultationResponseDTO>? {
-        try {
-            val consultaionService = createConsultationService()
-            val response = consultaionService.getAllConsultations()
 
-            if (response.isSuccessful) {
-                val consultations = response.body()?._embedded?.consultationResponseDTOList
-                val filteredConsultations = consultations?.filter { consultation ->
-                    consultation.dentists.any { dentist -> dentist.id == dentistId }
-                }
-                return filteredConsultations
-
-            } else {
-                Log.e("API_ERROR", "Failed to fetch consultations")
-                return null
-            }
-        } catch (ex: Exception) {
-
-            Toast.makeText(
-                requireContext(),
-                ex.message,
-                Toast.LENGTH_LONG
-            ).show()
-            return null
-        }
-
-
-    }
 }
