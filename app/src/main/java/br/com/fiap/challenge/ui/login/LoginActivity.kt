@@ -56,8 +56,6 @@ class LoginActivity : AppCompatActivity() {
     private fun authLogin() =lifecycleScope.launch {
         val registerNumber = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
-        println(registerNumber)
-        println(password)
 
         try {
                 val authService = createAuthService()
@@ -65,8 +63,6 @@ class LoginActivity : AppCompatActivity() {
                 val response = withContext(Dispatchers.IO){
                     authService.signIn(loginDTO)
                 }
-                println(loginDTO)
-                print(response.body())
 
 
                 if (response.isSuccessful && response.body()?.token != null) {

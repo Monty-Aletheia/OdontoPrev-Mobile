@@ -1,26 +1,28 @@
 package br.com.fiap.challenge.ui.login
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import br.com.fiap.challenge.R
 import br.com.fiap.challenge.data.SessionManager
 import br.com.fiap.challenge.databinding.FragmentProfileBinding
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
+import br.com.fiap.challenge.network.ConsultationResponseDTO
+import br.com.fiap.challenge.network.ConsultationService
+import br.com.fiap.challenge.network.LoginDTO
+import br.com.fiap.challenge.network.createAuthService
+import br.com.fiap.challenge.network.createConsultationService
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 
 class ProfileFragment : Fragment() {
+
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
@@ -40,7 +42,11 @@ class ProfileFragment : Fragment() {
             val sessionToken = SessionManager.getSessionToken(requireContext())
             binding.testeView.text = sessionToken
 
+            getConsultationsByDentist(sessionToken)
+
+
         }
+
 
     }
 
@@ -50,4 +56,33 @@ class ProfileFragment : Fragment() {
         _binding = null
     }
 
+
+    private suspend fun getConsultationsByDentist(dentistId: String): List<ConsultationResponseDTO>? {
+        try {
+            val consultaionService = createConsultationService()
+            val response = consultaionService.getAllConsultations()
+
+            if (response.isSuccessful) {
+                val consultations = response.body()?._embedded?.consultationResponseDTOList
+                val filteredConsultations = consultations?.filter { consultation ->
+                    consultation.dentists.any { dentist -> dentist.id == dentistId }
+                }
+                return filteredConsultations
+
+            } else {
+                Log.e("API_ERROR", "Failed to fetch consultations")
+                return null
+            }
+        } catch (ex: Exception) {
+
+            Toast.makeText(
+                requireContext(),
+                ex.message,
+                Toast.LENGTH_LONG
+            ).show()
+            return null
+        }
+
+
+    }
 }
