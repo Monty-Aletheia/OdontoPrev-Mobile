@@ -46,7 +46,6 @@ class ConsultationListFragment : Fragment() {
     private fun loadAllConsultations() = lifecycleScope.launch(Dispatchers.Main) {
         val sessionToken = SessionManager.getSessionToken(requireContext())
         val list = getConsultationsByDentist(sessionToken)
-        print(list)
         val recyclerView = binding.recyclerViewConsultationItem
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = ConsultationAdapter(list)

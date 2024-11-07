@@ -38,6 +38,8 @@ fun createAuthService(): AuthService {
     return retrofit.create(AuthService::class.java)
 }
 
+///////////////////////////////////////////////
+
 
 data class ConsultationResponse(
     val _embedded: Embedded
@@ -95,3 +97,55 @@ fun createConsultationService(): ConsultationService {
 
     return retrofit.create(ConsultationService::class.java)
 }
+
+
+///////////////////////////////////////////////
+
+
+
+interface DentistService {
+
+    @GET("{id}")
+    suspend fun getDentistById(@Path("id") dentistId: String): Response<Dentist>
+
+}
+
+fun createDentistService(): DentistService {
+    val retrofit = Retrofit.Builder()
+        .baseUrl(URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    return retrofit.create(DentistService::class.java)
+}
+
+
+/////////////////////////////////////////////////
+
+
+
+data class PatientsResponse(
+    val _embedded: EmbeddedPatient
+)
+
+data class EmbeddedPatient(
+    val patientResponseDTOList: List<Patient>
+)
+
+
+interface PatientService {
+
+    @GET("patients")
+    suspend fun getAllPatients(): Response<PatientsResponse>
+
+}
+
+fun createPatientService(): PatientService {
+    val retrofit = Retrofit.Builder()
+        .baseUrl(URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    return retrofit.create(PatientService::class.java)
+}
+

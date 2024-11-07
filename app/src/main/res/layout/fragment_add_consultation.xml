@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background=""
+        android:src="@drawable/keyboard_arrow_down_24dp_6b91a9_fill0_wght400_grad0_opsz24"
+        tools:layout_editor_absoluteX="296dp"
+        tools:layout_editor_absoluteY="30dp" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -26,19 +36,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="100dp"
         android:layout_marginEnd="60dp"
         android:background="@drawable/border_radius"
         android:backgroundTint="@color/gray"
         android:ems="10"
+        android:layout_marginTop="40dp"
         android:inputType="textEmailAddress"
         android:padding="6dp"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-         />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <TextView
         android:id="@+id/passwordTextView"
@@ -46,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="6dp"
+
         android:fontFamily="@font/inter_semibold"
         android:text="@string/procedimento"
         android:textColor="@color/blue"
@@ -57,10 +67,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/nome"
         android:textColor="@color/blue"
+
         app:layout_constraintBottom_toTopOf="@+id/emailEditText"
         app:layout_constraintStart_toStartOf="@+id/emailEditText" />
+
+    <TextView
+        android:id="@+id/pacienteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/paciente"
+        android:textColor="@color/blue"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintStart_toStartOf="@+id/spinner" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_marginTop="60dp"
+        android:padding="6dp"
+        android:layout_width="0dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp"
+        android:background="@drawable/border_radius"
+        android:backgroundTint="@color/gray"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
