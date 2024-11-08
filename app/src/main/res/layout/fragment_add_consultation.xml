@@ -6,17 +6,8 @@
     android:layout_height="match_parent">
 
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background=""
-        android:src="@drawable/keyboard_arrow_down_24dp_6b91a9_fill0_wght400_grad0_opsz24"
-        tools:layout_editor_absoluteX="296dp"
-        tools:layout_editor_absoluteY="30dp" />
-
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/consultationValueEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -25,14 +16,27 @@
         android:background="@drawable/border_radius"
         android:backgroundTint="@color/gray"
         android:ems="10"
-        android:inputType="textPassword"
+        android:inputType="numberDecimal"
         android:padding="6dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/dateEditText" />
+
+    <TextView
+        android:id="@+id/consultationValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/consultationValue"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/consultationValueEditText"
+        app:layout_constraintStart_toStartOf="@+id/consultationValueEditText" />
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/dateEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -41,7 +45,9 @@
         android:backgroundTint="@color/gray"
         android:ems="10"
         android:layout_marginTop="40dp"
-        android:inputType="textEmailAddress"
+        android:inputType="none"
+        android:focusable="false"
+        android:clickable="true"
         android:padding="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -49,32 +55,48 @@
 
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
+    <EditText
+        android:id="@+id/descriptionEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/border_radius"
+        android:backgroundTint="@color/gray"
+        android:ems="10"
+        android:inputType="text"
+        android:padding="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consultationValueEditText" />
+
     <TextView
-        android:id="@+id/passwordTextView"
+        android:id="@+id/descriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="6dp"
-
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/inter_semibold"
-        android:text="@string/procedimento"
+        android:text="@string/description"
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
-        app:layout_constraintStart_toStartOf="@+id/passwordEditText" />
+        app:layout_constraintBottom_toTopOf="@+id/descriptionEditText"
+        app:layout_constraintStart_toStartOf="@+id/descriptionEditText" />
+
 
     <TextView
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/inter_semibold"
-        android:text="@string/nome"
+        android:text="@string/consultationDate"
         android:textColor="@color/blue"
 
-        app:layout_constraintBottom_toTopOf="@+id/emailEditText"
-        app:layout_constraintStart_toStartOf="@+id/emailEditText" />
+        app:layout_constraintBottom_toTopOf="@+id/dateEditText"
+        app:layout_constraintStart_toStartOf="@+id/dateEditText" />
 
     <TextView
         android:id="@+id/pacienteTextView"
@@ -82,23 +104,72 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/inter_semibold"
-        android:text="@string/paciente"
+        android:text="@string/patient"
         android:textColor="@color/blue"
         android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintStart_toStartOf="@+id/spinner" />
 
+    <TextView
+        android:id="@+id/newConsultationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/newConsultation"
+        android:textSize="20sp"
+        android:textColor="@color/blue"
+        app:layout_constraintTop_toTopOf="@id/aletheiaSoloImageView"
+        app:layout_constraintBottom_toBottomOf="@id/aletheiaSoloImageView"
+        app:layout_constraintStart_toEndOf="@id/aletheiaSoloImageView"/>
+
     <Spinner
         android:id="@+id/spinner"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:padding="6dp"
         android:layout_width="0dp"
         android:layout_marginEnd="60dp"
         android:layout_marginStart="60dp"
+        android:paddingEnd="20dp"
         android:background="@drawable/border_radius"
         android:backgroundTint="@color/gray"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/aletheiaSoloImageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="@+id/spinner"
+        app:layout_constraintTop_toTopOf="@+id/spinner"
+        app:srcCompat="@drawable/keyboard_arrow_down_24dp_6b91a9_fill0_wght400_grad0_opsz24" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/border_radius"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/inter_bold"
+        android:paddingStart="45dp"
+        android:paddingEnd="45dp"
+        android:text="@string/addConsultationTextButton"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+
+    <ImageView
+        android:id="@+id/aletheiaSoloImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/aletheia_solo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

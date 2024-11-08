@@ -60,6 +60,19 @@ data class ConsultationResponseDTO(
     val dentists: List<Dentist>,
 )
 
+data class DentistId(
+    val id: String
+)
+
+data class ConsultationRequestDTO(
+    val consultationDate: String,
+    val consultationValue: Double,
+    val riskStatus: RiskStatus,
+    val patientId: String,
+    val dentistIds: List<String>,
+    val description: String?,
+)
+
 data class Patient(
     val id: String,
     val name: String,
@@ -87,7 +100,12 @@ interface ConsultationService{
     @GET("consultations")
     suspend fun getAllConsultations(): Response<ConsultationResponse>
 
+    @POST("consultations")
+    suspend fun createNewConsultation(@Body consultationRequestDTO: ConsultationRequestDTO): Response<ConsultationResponseDTO>
+
+
 }
+
 
 fun createConsultationService(): ConsultationService {
     val retrofit = Retrofit.Builder()

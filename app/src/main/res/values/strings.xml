@@ -10,8 +10,13 @@
     <string name="_2_page">2° Page</string>
     <string name="_3_page">3° Page</string>
     <string name="email">Email</string>
+    <string name="registrarionNumber">Numero de CRO</string>
     <string name="senha">Senha</string>
-    <string name="procedimento">procedimento</string>
+    <string name="consultationValue">Valor da consulta (R$)</string>
+    <string name="description">Descrição (Opcional)</string>
     <string name="nome">nome</string>
-    <string name="paciente">Paciente</string>
+    <string name="consultationDate">Data da consulta</string>
+    <string name="patient">Paciente</string>
+    <string name="newConsultation">Nova Consulta</string>
+    <string name="addConsultationTextButton">Criar</string>
 </resources>

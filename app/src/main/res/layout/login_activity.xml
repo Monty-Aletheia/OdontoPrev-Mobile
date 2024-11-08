@@ -37,17 +37,17 @@
         android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/registrationNumberEditText" />
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/registrationNumberEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:padding="6dp"
         android:background="@drawable/border_radius"
         android:backgroundTint="@color/gray"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
         android:layout_marginTop="35dp"/>
 
     <TextView
-        android:id="@+id/passwordTextView"
+        android:id="@+id/consultationValueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -85,10 +85,10 @@
         android:layout_marginStart="10dp"
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/inter_semibold"
-        android:text="@string/email"
+        android:text="@string/registrarionNumber"
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toTopOf="@+id/emailEditText"
-        app:layout_constraintStart_toStartOf="@+id/emailEditText" />
+        app:layout_constraintBottom_toTopOf="@+id/registrationNumberEditText"
+        app:layout_constraintStart_toStartOf="@+id/registrationNumberEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

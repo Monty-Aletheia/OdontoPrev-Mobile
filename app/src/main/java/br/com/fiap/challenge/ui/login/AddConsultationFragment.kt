@@ -1,5 +1,7 @@
 package br.com.fiap.challenge.ui.login
 
+import android.app.DatePickerDialog
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,20 +10,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.fiap.challenge.R
-import br.com.fiap.challenge.adapter.ConsultationAdapter
 import br.com.fiap.challenge.data.SessionManager
 import br.com.fiap.challenge.databinding.FragmentAddConsultationBinding
-import br.com.fiap.challenge.databinding.FragmentProfileBinding
-import br.com.fiap.challenge.network.ConsultationResponseDTO
+import br.com.fiap.challenge.models.RiskStatus
+import br.com.fiap.challenge.network.ConsultationRequestDTO
+import br.com.fiap.challenge.network.DentistId
 import br.com.fiap.challenge.network.Patient
 import br.com.fiap.challenge.network.createConsultationService
 import br.com.fiap.challenge.network.createPatientService
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class AddConsultationFragment : Fragment() {
 
@@ -40,6 +42,22 @@ class AddConsultationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+        val dateEditText = binding.dateEditText
+
+        val dateTime: String? = null
+
+        dateEditText.setOnClickListener {
+            openDatePickerDialog(dateFormat, dateEditText, dateTime)
+        }
+
+        var selectedPatientId = "@Null"
+
+        binding.button.setOnClickListener {
+            createConsultation(selectedPatientId)
+        }
+
         lifecycleScope.launch {
             val list = getAllPatients()
             val patientNames = list.map { it.name }
@@ -56,17 +74,15 @@ class AddConsultationFragment : Fragment() {
                     position: Int,
                     id: Long
                 ) {
-                    val selectedPatientName = parent.getItemAtPosition(position) as String
-                    Toast.makeText(
-                        requireContext(),
-                        "Paciente selecionado: $selectedPatientName",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    selectedPatientId = list[position].id
+
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
                 }
             }
+
+
         }
 
     }
@@ -75,6 +91,77 @@ class AddConsultationFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+
+    private fun openDatePickerDialog(
+        dateFormat: SimpleDateFormat,
+        dateEditText: EditText,
+        dateTime: String?
+    ) {
+        var dateTime1 = dateTime
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            { _, selectedYear, selectedMonth, selectedDay ->
+                calendar.set(selectedYear, selectedMonth, selectedDay)
+                val selectedDate = dateFormat.format(calendar.time)
+                dateEditText.setText(selectedDate)
+
+                dateTime1 = selectedDate
+            },
+            year, month, day
+        )
+        datePickerDialog.show()
+    }
+
+
+    private fun createConsultation(selectedPatienteId: String) = lifecycleScope.launch {
+
+        try {
+
+
+            val consultationDate = binding.dateEditText.text.toString()
+            val consultationValue = binding.consultationValueEditText.text.toString().toDouble()
+            val consultationDescription = binding.descriptionEditText.text.toString()
+            val sessionToken = SessionManager.getSessionToken(requireContext())
+            val dentistId = mutableListOf<String>()
+            dentistId.add(sessionToken)
+
+            val consultationRequestDTO = ConsultationRequestDTO(
+                consultationDate,
+                consultationValue,
+                RiskStatus.ALTO,
+                selectedPatienteId,
+                dentistId,
+                consultationDescription
+            )
+            val consultationService = createConsultationService()
+            val response = consultationService.createNewConsultation(consultationRequestDTO)
+
+            if (response.isSuccessful) {
+                Toast.makeText(requireContext(), "Consulta criada com sucesso", Toast.LENGTH_LONG)
+                    .show()
+
+            } else {
+                Toast.makeText(requireContext(), "Erro: ${response.message()}", Toast.LENGTH_LONG)
+                    .show()
+                println(consultationRequestDTO)
+            }
+
+
+        } catch (ex: Exception) {
+
+            Toast.makeText(
+                requireContext(),
+                ex.message,
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     private suspend fun getAllPatients(): List<Patient> {
