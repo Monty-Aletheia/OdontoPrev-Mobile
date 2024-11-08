@@ -1,14 +1,11 @@
 <resources>
     <string name="app_name">Challenge</string>
-    <string name="button">Entrar</string>
-    <string name="name">Name</string>
+    <string name="buttonEntrar">Entrar</string>
+    <string name="buttonCadastrar">Cadastrar-se</string>
+    <string name="name">Nome</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="loren">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
-    <string name="_5_page">5° Page</string>
-    <string name="_4_page">4° Page</string>
-    <string name="_2_page">2° Page</string>
-    <string name="_3_page">3° Page</string>
     <string name="email">Email</string>
     <string name="registrarionNumber">Numero de CRO</string>
     <string name="senha">Senha</string>
@@ -19,4 +16,7 @@
     <string name="patient">Paciente</string>
     <string name="newConsultation">Nova Consulta</string>
     <string name="addConsultationTextButton">Criar</string>
+    <string name="specialty">Especialidade</string>
+    <string name="registerToLoginPhrase"><u>Já possuo uma conta Aletheia. Fazer login.</u></string>
+    <string name="loginToRegisterPhrase"><u>Não possuo uma conta Aletheia. Cadastrar-se.</u></string>
 </resources>

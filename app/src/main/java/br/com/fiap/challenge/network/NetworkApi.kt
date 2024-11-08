@@ -60,9 +60,6 @@ data class ConsultationResponseDTO(
     val dentists: List<Dentist>,
 )
 
-data class DentistId(
-    val id: String
-)
 
 data class ConsultationRequestDTO(
     val consultationDate: String,
@@ -120,11 +117,34 @@ fun createConsultationService(): ConsultationService {
 ///////////////////////////////////////////////
 
 
+data class DentistRequestDTO(
+    val name: String,
+    val specialty: String,
+    val registrationNumber: String,
+    val password: String,
+    val claimsRate: Double,
+    val riskStatus: RiskStatus
+)
+
+data class DentistResponseDTO(
+    val id: String,
+    val name: String,
+    val specialty: String,
+    val registrationNumber: String,
+    val password: String,
+    val claimsRate: Double,
+    val riskStatus: RiskStatus
+
+)
+
 
 interface DentistService {
 
     @GET("{id}")
     suspend fun getDentistById(@Path("id") dentistId: String): Response<Dentist>
+
+    @POST("dentists")
+    suspend fun createDentist(@Body dentistRequestDTO: DentistRequestDTO): Response<DentistResponseDTO>
 
 }
 
@@ -166,4 +186,3 @@ fun createPatientService(): PatientService {
 
     return retrofit.create(PatientService::class.java)
 }
-

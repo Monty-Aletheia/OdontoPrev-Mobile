@@ -1,6 +1,5 @@
-package br.com.fiap.challenge.ui.login
+package br.com.fiap.challenge.ui.application
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -8,19 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
 import br.com.fiap.challenge.data.SessionManager
 import br.com.fiap.challenge.databinding.LoginActivityBinding
 import br.com.fiap.challenge.network.LoginDTO
 import br.com.fiap.challenge.network.createAuthService
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class LoginActivity : AppCompatActivity() {
@@ -40,10 +32,12 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        binding.loginToRegisterTextView.setOnClickListener{
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
 
-        val button = binding.button
-
-        button.setOnClickListener {
+        binding.loginButton.setOnClickListener {
             authLogin()
         }
 

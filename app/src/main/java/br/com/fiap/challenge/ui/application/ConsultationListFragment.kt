@@ -1,4 +1,4 @@
-package br.com.fiap.challenge.ui.login
+package br.com.fiap.challenge.ui.application
 
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.fiap.challenge.R
 import br.com.fiap.challenge.adapter.ConsultationAdapter
 import br.com.fiap.challenge.data.SessionManager
 import br.com.fiap.challenge.databinding.FragmentConsultationListBinding

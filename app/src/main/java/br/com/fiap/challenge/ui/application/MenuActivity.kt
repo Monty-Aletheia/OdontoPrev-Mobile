@@ -1,4 +1,4 @@
-package br.com.fiap.challenge.ui.login
+package br.com.fiap.challenge.ui.application
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

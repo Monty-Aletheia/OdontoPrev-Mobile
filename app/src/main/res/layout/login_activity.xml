@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.application.LoginActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -17,7 +17,7 @@
         android:fontFamily="@font/inter_bold"
         android:paddingStart="45dp"
         android:paddingEnd="45dp"
-        android:text="@string/button"
+        android:text="@string/buttonEntrar"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,13 +58,13 @@
 
     <ImageView
         android:id="@+id/aletheiaImageView"
-        android:layout_width="250dp"
-        android:layout_height="220dp"
+        android:layout_width="200dp"
+        android:layout_height="180dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/_004aad_1_removebg_preview"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="35dp"/>
+        android:layout_marginTop="45dp"/>
 
     <TextView
         android:id="@+id/consultationValueTextView"
@@ -89,6 +89,18 @@
         android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/registrationNumberEditText"
         app:layout_constraintStart_toStartOf="@+id/registrationNumberEditText" />
+
+    <TextView
+        android:id="@+id/loginToRegisterTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/loginToRegisterPhrase"
+        android:textColor="@color/blue"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

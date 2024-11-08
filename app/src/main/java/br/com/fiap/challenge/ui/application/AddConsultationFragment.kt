@@ -1,4 +1,4 @@
-package br.com.fiap.challenge.ui.login
+package br.com.fiap.challenge.ui.application
 
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
@@ -17,7 +17,6 @@ import br.com.fiap.challenge.data.SessionManager
 import br.com.fiap.challenge.databinding.FragmentAddConsultationBinding
 import br.com.fiap.challenge.models.RiskStatus
 import br.com.fiap.challenge.network.ConsultationRequestDTO
-import br.com.fiap.challenge.network.DentistId
 import br.com.fiap.challenge.network.Patient
 import br.com.fiap.challenge.network.createConsultationService
 import br.com.fiap.challenge.network.createPatientService
@@ -54,7 +53,7 @@ class AddConsultationFragment : Fragment() {
 
         var selectedPatientId = "@Null"
 
-        binding.button.setOnClickListener {
+        binding.createButton.setOnClickListener {
             createConsultation(selectedPatientId)
         }
 
