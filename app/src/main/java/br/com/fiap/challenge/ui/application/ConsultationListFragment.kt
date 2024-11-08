@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.fiap.challenge.adapter.ConsultationAdapter
@@ -33,6 +34,10 @@ class ConsultationListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.recyclerViewConsultationItem.isVisible = false
+        binding.progressBar.isVisible = true
+
         loadAllConsultations()
 
 
@@ -53,6 +58,9 @@ class ConsultationListFragment : Fragment() {
             intent.putExtra("CONSULTATION_ID", consultationId)
             startActivity(intent)
         }
+
+        binding.recyclerViewConsultationItem.isVisible = true
+        binding.progressBar.isVisible = false
 
     }
 

@@ -13,10 +13,13 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import br.com.fiap.challenge.R
+import br.com.fiap.challenge.animations.AnimationsManager
 import br.com.fiap.challenge.data.SessionManager
 import br.com.fiap.challenge.databinding.FragmentAddConsultationBinding
+import br.com.fiap.challenge.models.FragmentType
 import br.com.fiap.challenge.models.RiskStatus
 import br.com.fiap.challenge.network.ConsultationRequestDTO
 import br.com.fiap.challenge.network.Patient
@@ -29,7 +32,10 @@ import java.util.Locale
 class AddConsultationFragment : Fragment() {
 
     private var _binding: FragmentAddConsultationBinding? = null
+    private var currentFragment: FragmentType = FragmentType.PROFILE
+    private var previousFragment: FragmentType? = null
     private val binding get() = _binding!!
+    private lateinit var animationsManager: AnimationsManager
 
 
     override fun onCreateView(
@@ -42,6 +48,8 @@ class AddConsultationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        animationsManager = AnimationsManager()
 
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
@@ -147,7 +155,7 @@ class AddConsultationFragment : Fragment() {
             if (response.isSuccessful) {
                 Toast.makeText(requireContext(), "Consulta criada com sucesso", Toast.LENGTH_LONG)
                     .show()
-                findNavController().navigate(R.id.consultationListFragment)
+                navigateTo(FragmentType.LIST)
 
             } else {
                 Toast.makeText(requireContext(), "Erro: ${response.message()}", Toast.LENGTH_LONG)
@@ -191,5 +199,33 @@ class AddConsultationFragment : Fragment() {
 
     }
 
+    private fun navigateTo(destination: FragmentType) {
+
+        if (currentFragment == destination) return
+
+        previousFragment = currentFragment
+        currentFragment = destination
+        val navOptions = animationsManager.getNavOptionsFoFragment(destination, previousFragment)
+
+        when (destination) {
+            FragmentType.PROFILE -> findNavController().navigate(
+                R.id.profileFragment,
+                null,
+                navOptions
+            )
+
+            FragmentType.LIST -> findNavController().navigate(
+                R.id.consultationListFragment,
+                null,
+                navOptions
+            )
+
+            FragmentType.ADD -> findNavController().navigate(
+                R.id.addConsultationFragment,
+                null,
+                navOptions
+            )
+        }
+    }
 
 }

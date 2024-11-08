@@ -166,9 +166,8 @@
         android:id="@+id/aletheiaSoloImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="70dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/spinner"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/aletheia_solo" />
 

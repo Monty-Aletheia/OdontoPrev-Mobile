@@ -27,6 +27,10 @@ class ConsultationDetailsActivity : AppCompatActivity() {
             insets
         }
 
+        binding.detailsCardView.isVisible = false
+        binding.patientNameTextView.isVisible = false
+        binding.progressBar3.isVisible = true
+
         val consultaionId = intent.extras!!.getString("CONSULTATION_ID")!!
 
         lifecycleScope.launch {
@@ -61,6 +65,11 @@ class ConsultationDetailsActivity : AppCompatActivity() {
                 } else {
                     binding.patientDescriptionTextView.text = consultation.description
                 }
+
+                binding.detailsCardView.isVisible = true
+                binding.patientNameTextView.isVisible = true
+                binding.progressBar3.isVisible = false
+
 
             } else {
                 Toast.makeText(

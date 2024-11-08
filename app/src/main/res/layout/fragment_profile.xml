@@ -17,26 +17,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/cardConstraintProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dentistProfileNameTextView"
-        app:layout_constraintBottom_toBottomOf="@+id/cardConstraintProfile">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dentistProfileNameTextView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardConstraintProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="25dp"
             android:paddingStart="20dp"
+            android:paddingTop="25dp"
             android:paddingEnd="20dp"
             android:paddingBottom="20dp">
 
@@ -52,11 +53,11 @@
             <TextView
                 android:id="@+id/specialtyTextView"
                 android:layout_width="wrap_content"
-                android:fontFamily="@font/inter_bold"
-                android:textSize="13sp"
-                android:textColor="@color/blue"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
                 android:text="@string/profileSpecialty"
+                android:textColor="@color/blue"
+                android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,21 +65,21 @@
                 android:id="@+id/dentistSpecialtyTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textColor="@color/blue"
                 android:fontFamily="@font/inter"
-                tools:text="Ortodontista"
+                android:textColor="@color/blue"
+                android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@+id/specialtyTextView"
-                app:layout_constraintTop_toBottomOf="@+id/specialtyTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/specialtyTextView"
+                tools:text="Ortodontista" />
 
             <TextView
                 android:id="@+id/profileRegisterNumberTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blue"
                 android:fontFamily="@font/inter_bold"
-                android:textSize="13sp"
                 android:text="@string/profileRegisterNumber"
+                android:textColor="@color/blue"
+                android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,12 +87,22 @@
                 android:id="@+id/dentistProfileRegisterNumberTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:textColor="@color/blue"
                 android:textSize="13sp"
-                android:fontFamily="@font/inter"
-                tools:text="553873"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toBottomOf="@+id/profileRegisterNumberTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/profileRegisterNumberTextView"
+                tools:text="553873" />
+
+            <ProgressBar
+                android:id="@+id/profileInfosProgessBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -109,6 +120,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
+    <ProgressBar
+        android:id="@+id/nameProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="32dp"
+        android:layout_height="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
