@@ -97,6 +97,9 @@ interface ConsultationService{
     @GET("consultations")
     suspend fun getAllConsultations(): Response<ConsultationResponse>
 
+    @GET("consultations/{id}")
+    suspend fun getConsultationById(@Path("id") consultationId: String): Response<ConsultationResponseDTO>
+
     @POST("consultations")
     suspend fun createNewConsultation(@Body consultationRequestDTO: ConsultationRequestDTO): Response<ConsultationResponseDTO>
 

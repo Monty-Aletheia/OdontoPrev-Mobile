@@ -1,5 +1,6 @@
 package br.com.fiap.challenge.ui.application
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -47,7 +48,11 @@ class ConsultationListFragment : Fragment() {
         val list = getConsultationsByDentist(sessionToken)
         val recyclerView = binding.recyclerViewConsultationItem
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = ConsultationAdapter(list)
+        recyclerView.adapter = ConsultationAdapter(list) { consultationId ->
+            val intent = Intent(requireContext(), ConsultationDetailsActivity::class.java)
+            intent.putExtra("CONSULTATION_ID", consultationId)
+            startActivity(intent)
+        }
 
     }
 

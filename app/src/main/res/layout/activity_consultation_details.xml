@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.application.ConsultationDetailsActivity">
+
+    <ImageView
+        android:id="@+id/patientIconImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fragment_profile_icon" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/detailsCardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardConstraint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientNameTextView"
+        app:layout_constraintVertical_bias="0.55">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardConstraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="35dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="28dp"
+            android:paddingBottom="30dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.61" />
+
+            <TextView
+                android:id="@+id/birthdayTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/birthday"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/patientBirthdayTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="11/08/2024"
+                android:textSize="12sp"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/inter"
+                app:layout_constraintStart_toStartOf="@+id/birthdayTextView"
+                app:layout_constraintTop_toBottomOf="@+id/birthdayTextView" />
+
+            <TextView
+                android:id="@+id/genderTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:fontFamily="@font/inter_bold"
+                android:textSize="12sp"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/birthdayTextView" />
+
+            <TextView
+                android:id="@+id/patientGenderTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:textSize="12sp"
+                tools:text="M"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/genderTextView" />
+
+            <TextView
+                android:id="@+id/consultationDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/inter_bold"
+                android:textSize="12sp"
+                android:textColor="@color/blue"
+                android:text="@string/detailsConsultationDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/patientBirthdayTextView" />
+
+            <TextView
+                android:id="@+id/patientConsultatioDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="22/02/12"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toStartOf="@+id/consultationDateTextView"
+                app:layout_constraintTop_toBottomOf="@+id/consultationDateTextView" />
+
+            <TextView
+                android:id="@+id/detailsConsultationValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/inter_bold"
+                android:textSize="12sp"
+                android:text="@string/detailsConsultationValue"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/consultationDateTextView" />
+
+            <TextView
+                android:id="@+id/patientConsultationValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="R$ 20.000"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/detailsConsultationValueTextView" />
+
+            <TextView
+                android:id="@+id/consultationFrequencyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/consultationFrequency"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/inter_bold"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/patientConsultatioDateTextView" />
+
+            <TextView
+                android:id="@+id/patientConsultationFrequencyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="3"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/consultationFrequencyTextView" />
+
+            <TextView
+                android:id="@+id/riskStatusTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/riskStatus"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/consultationFrequencyTextView" />
+
+            <TextView
+                android:id="@+id/patientRiskStatusTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="ALTO"
+                android:textSize="12sp"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/inter"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/riskStatusTextView" />
+
+            <TextView
+                android:id="@+id/consultationDescriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/consultationDescription"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/patientConsultationFrequencyTextView" />
+
+            <TextView
+                android:id="@+id/patientDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter"
+                android:text="@string/rocky"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/consultationDescriptionTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/patientNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        tools:text="Pedro Lucca Medeiros Miranda"
+        android:gravity="center"
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/blue"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientIconImageView" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

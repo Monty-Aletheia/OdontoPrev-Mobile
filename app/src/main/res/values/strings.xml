@@ -19,4 +19,12 @@
     <string name="specialty">Especialidade</string>
     <string name="registerToLoginPhrase"><u>Já possuo uma conta Aletheia. Fazer login.</u></string>
     <string name="loginToRegisterPhrase"><u>Não possuo uma conta Aletheia. Cadastrar-se.</u></string>
+    <string name="birthday">Data de nascimento:</string>
+    <string name="gender">Genero:</string>
+    <string name="detailsConsultationDate">Data da consulta:</string>
+    <string name="detailsConsultationValue">Valor da consulta:</string>
+    <string name="consultationFrequency">Frequência de consulta:</string>
+    <string name="riskStatus">Status de risco:</string>
+    <string name="consultationDescription">Descrição:</string>
+    <string name="rocky">Você não vai acreditar. Mas você cabia aqui. Eu segurava você e dizia “Esse menino vai ser o melhor menino do mundo. Esse menino vai ser melhor do que qualquer um que conhecemos.”. E você cresceu bom, maravilhoso.</string>
 </resources>
