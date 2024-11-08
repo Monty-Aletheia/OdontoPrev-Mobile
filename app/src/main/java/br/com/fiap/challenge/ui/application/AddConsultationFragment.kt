@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import br.com.fiap.challenge.R
 import br.com.fiap.challenge.data.SessionManager
 import br.com.fiap.challenge.databinding.FragmentAddConsultationBinding
 import br.com.fiap.challenge.models.RiskStatus
@@ -145,6 +147,7 @@ class AddConsultationFragment : Fragment() {
             if (response.isSuccessful) {
                 Toast.makeText(requireContext(), "Consulta criada com sucesso", Toast.LENGTH_LONG)
                     .show()
+                findNavController().navigate(R.id.consultationListFragment)
 
             } else {
                 Toast.makeText(requireContext(), "Erro: ${response.message()}", Toast.LENGTH_LONG)

@@ -143,8 +143,8 @@ data class DentistResponseDTO(
 
 interface DentistService {
 
-    @GET("{id}")
-    suspend fun getDentistById(@Path("id") dentistId: String): Response<Dentist>
+    @GET("dentists/{id}")
+    suspend fun getDentistById(@Path("id") dentistId: String): Response<DentistResponseDTO>
 
     @POST("dentists")
     suspend fun createDentist(@Body dentistRequestDTO: DentistRequestDTO): Response<DentistResponseDTO>

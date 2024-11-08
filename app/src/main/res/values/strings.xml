@@ -27,4 +27,6 @@
     <string name="riskStatus">Status de risco:</string>
     <string name="consultationDescription">Descrição:</string>
     <string name="rocky">Você não vai acreditar. Mas você cabia aqui. Eu segurava você e dizia “Esse menino vai ser o melhor menino do mundo. Esse menino vai ser melhor do que qualquer um que conhecemos.”. E você cresceu bom, maravilhoso.</string>
+    <string name="profileSpecialty">Especialidade:</string>
+    <string name="profileRegisterNumber">Número de CRO:</string>
 </resources>

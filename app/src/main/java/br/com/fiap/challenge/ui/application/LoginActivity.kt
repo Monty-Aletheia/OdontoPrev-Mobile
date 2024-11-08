@@ -12,6 +12,7 @@ import br.com.fiap.challenge.data.SessionManager
 import br.com.fiap.challenge.databinding.LoginActivityBinding
 import br.com.fiap.challenge.network.LoginDTO
 import br.com.fiap.challenge.network.createAuthService
+import br.com.fiap.challenge.network.createDentistService
 import kotlinx.coroutines.launch
 
 
@@ -44,6 +45,13 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.registrationNumberEditText.text.clear()
+        binding.passwordEditText.text.clear()
+    }
+
+
 
     private fun authLogin() = lifecycleScope.launch {
         val registerNumber = binding.registrationNumberEditText.text.toString()
@@ -63,6 +71,7 @@ class LoginActivity : AppCompatActivity() {
 
                 val intent = Intent(this@LoginActivity, MenuActivity::class.java)
                 startActivity(intent)
+
 
             } else {
 
